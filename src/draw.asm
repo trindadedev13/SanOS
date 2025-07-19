@@ -29,3 +29,5 @@ DrawString:
                  cmp    al, 0x00   ; compare if al is 0x00 (null)
                  jne    DrawLoop   ; if no, draw
          ret
+
+; TODO: DrawRect(color, x, y, w, h)
