@@ -1,30 +1,29 @@
 [BITS    16]
-[ORG     0x7C00]
+[ORG 0x0000]
 
-; OS Start
-BootMain:
+KernelMain:
+
+         ; mov     [DriveNumber], dl
+
          ; Set 13h Video Mode
          mov     ah, 0x00    ; set mode
          mov     al, 0x13    ; 13h
-         int    0x10
-         
+         int     0x10
+
          ; Draw the Welcome
          mov     si, welcome
          mov     bl, 0x0A    ; color = green
-         call    DrawString
+         call    PrintString
 
          ; Draw the SanOS Text
          mov     si, sanOS
          mov     bl, 0x0C    ; color = red
-         call    DrawString
+         call    PrintString
 
          jmp     $
 
 welcome: db "Welcome to ", 0x00
 sanOS: db "SanOS!", 0x00
 
-%include "src/draw.asm"
-
-; Fill the bytes to fit 512
-times 510 - ($ - $$) db 0x00
-dw    0xAA55
+%include "src/graphics/graphics.asm"
+%include "src/drivers/keyboard.asm"

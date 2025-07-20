@@ -32,3 +32,10 @@
 - `jns [label]`: Jump if not sign (`SF = 0`)
 - `jp  [label]`: Jump if parity (`PF = 1`)
 - `jnp [label]`: Jump if not parity (`PF = 0`)
+
+
+## MISC
+- `repe`: Repeat while equal (`repeat while zero flag ZF = 1 and CX ≠ 0`)
+- `cli `: Clear interrupt flag (`disable the IF(interrupt flag) that disable the extern interruptions`)
+- `sti `: Set interrupt flag (`enable the IF(interrupt flag) that enable the extern interruptions`)
+- `htl `: Halt Suspends processor execution and puts it into standby mode (`when used with cli, the processor stops indefinitely because no interrupt will "wake it up"`)
